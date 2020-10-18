@@ -6,7 +6,7 @@ pipeline {
                 sh 'mvn --version'
             }
         }
-        stage('Validation') {
+        stage('Validation and Trigger') {
         steps {
         //Moving in to the directory to execute the commands
         dir('account-service') {
@@ -21,6 +21,7 @@ pipeline {
                     CONTINUE_BUILD = false
                 } else {
                     echo "Changes found in the account-service module"
+                    //build job: "account-service/${env.BRANCH_NAME}", propagate: true, wait: true
                 }
             }
         }
@@ -36,6 +37,7 @@ pipeline {
                     CONTINUE_BUILD = false
                 } else {
                     echo "Changes found in the customer-service module"
+                    //build job: "customer-service/${env.BRANCH_NAME}", propagate: true, wait: true
                 }
             }              
     } 

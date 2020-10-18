@@ -6,7 +6,7 @@ pipeline {
                 sh 'mvn --version'
             }
         }
-       /* stage('Validation') {
+        stage('Validation') {
         steps {
         //Moving in to the directory to execute the commands
         dir('account-service') {
@@ -40,6 +40,6 @@ pipeline {
             }              
     } 
 }
-        } */
+        } 
     }
 }

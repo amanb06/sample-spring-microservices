@@ -1,18 +1,24 @@
-node {
+/*node {
 
     withMaven(maven:'maven') {
 
         stage('Checkout') {
             git url: 'https://github.com/amanb06/sample-spring-microservices.git', credentialsId: 'jenkinstest', branch: 'master'
-        }
-
+        } */
+pipeline{
+   stages{
+   
         stage('Build') {
             sh 'mvn clean install'
 
             def pom = readMavenPom file:'pom.xml'
             print pom.version
             env.version = pom.version
+            stage ('Final') {
+            build job: 'gateway-service-pipeline', wait: false
         }
+   }
+}
 /*
         stage('Image') {
             dir ('customer-service') {
@@ -24,11 +30,11 @@ node {
         stage ('Run') {
             docker.image("localhost:5000/customer-service:${env.version}").run('-p 3333:3333 -h customer --name customer --link discovery --link account')
         }
-*/
+
         stage ('Final') {
             build job: 'gateway-service-pipeline', wait: false
         }      
 
     }
 
-}
+}*/

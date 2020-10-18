@@ -21,7 +21,7 @@ pipeline {
                     CONTINUE_BUILD = false
                 } else {
                     echo "Changes found in the account-service module"
-                    build job: "account-service/${env.BRANCH_NAME}", wait: true
+                    build job: "account-service/${env.BRANCH_NAME}", parameters: [string(name: 'wait', value: "false")]
                 }
             }
         }

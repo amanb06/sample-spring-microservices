@@ -28,7 +28,9 @@ node {
             docker.image("localhost:5000/account-service:${env.version}").run('-p 2222:2222 -h account --name account --link discovery')
         }
 */
+     
         stage ('Final') {
+            echo "Hello! Change in account service"
             build job: 'customer-service-pipeline', wait: false
         }      
 

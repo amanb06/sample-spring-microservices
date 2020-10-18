@@ -38,8 +38,8 @@ pipeline {
                     echo "Changes found in the customer-service module"
                 }
             }              
-    } */
+    } 
 }
-        }
+        } */
     }
 }

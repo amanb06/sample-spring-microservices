@@ -37,7 +37,7 @@ pipeline {
      
         stage ('Final') {
             echo "Hello! Change in account service"
-            build job: 'customer-service-pipeline', wait: false
+            //build job: 'customer-service-pipeline', wait: false
         }      
 
     }
